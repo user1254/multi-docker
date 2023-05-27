@@ -13,4 +13,10 @@ after_success:
   - docker build -t tookme1hour/multi-ngix ./nginx
   - docker build -t tookme1hour/multi-server ./server
   - docker build -t tookme1hour/multi-worker ./worker
+
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push tookme1hour/multi-client
+  - docker push tookme1hour/multi-nginx
+  - docker push tookme1hour/multi-server
+  - docker push tookme1hour/multi-worker
   
