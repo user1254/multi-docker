@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tookme1hour/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run tookme1hour/react-test npm test CI=true
+
+after_success:
+  - docker build -t tookme1hour/multi-client ./client # build prodcution version with Dockerfile
+  - docker build -t tookme1hour/multi-ngix ./nginx
+  - docker build -t tookme1hour/multi-server ./server
+  - docker build -t tookme1hour/multi-worker ./worker
