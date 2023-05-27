@@ -10,7 +10,7 @@ script:
 
 after_success:
   - docker build -t tookme1hour/multi-client ./client # build prodcution version with Dockerfile
-  - docker build -t tookme1hour/multi-ngix ./nginx
+  - docker build -t tookme1hour/multi-nginx ./nginx
   - docker build -t tookme1hour/multi-server ./server
   - docker build -t tookme1hour/multi-worker ./worker
 
