@@ -1,7 +1,7 @@
 FROM node:16-alpine as builder
 WORKDIR '/app'
 COPY ./package.json .
-RUN npm intall
+RUN npm install
 CMD ['npm', 'run', 'build']
 
 FROM nginx
